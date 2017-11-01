@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		140871941FA96E99007E020E /* BlueToothViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 140871931FA96E99007E020E /* BlueToothViewController.m */; };
+		140871961FA975CB007E020E /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 140871951FA975CB007E020E /* CoreBluetooth.framework */; };
+		140871991FA97D3B007E020E /* PeripheralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 140871981FA97D3B007E020E /* PeripheralViewController.m */; };
+		1408719C1FA9A630007E020E /* CentralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1408719B1FA9A630007E020E /* CentralViewController.m */; };
 		144603C91F95915A00E9F651 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 144603C81F95915A00E9F651 /* AppDelegate.m */; };
 		144603CC1F95915A00E9F651 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 144603CB1F95915A00E9F651 /* ViewController.m */; };
 		144603CF1F95915A00E9F651 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 144603CD1F95915A00E9F651 /* Main.storyboard */; };
@@ -24,6 +28,7 @@
 		144604111F959F7A00E9F651 /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 144604101F959F7A00E9F651 /* libxml2.2.tbd */; };
 		144604131F959F8200E9F651 /* libresolv.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 144604121F959F8200E9F651 /* libresolv.9.tbd */; };
 		144604191F95EC8000E9F651 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 144604181F95EC8000E9F651 /* SystemConfiguration.framework */; };
+		145EDC261F9B314C00FDEBC7 /* AnimationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 145EDC251F9B314C00FDEBC7 /* AnimationViewController.m */; };
 		1469938C1F99A3F600BC061D /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1469938B1F99A3F500BC061D /* CoreTelephony.framework */; };
 		1469938E1F99A3FF00BC061D /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1469938D1F99A3FF00BC061D /* CoreImage.framework */; };
 		146993901F99A41F00BC061D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1469938F1F99A41F00BC061D /* AudioToolbox.framework */; };
@@ -50,6 +55,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		140871921FA96E99007E020E /* BlueToothViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BlueToothViewController.h; sourceTree = "<group>"; };
+		140871931FA96E99007E020E /* BlueToothViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlueToothViewController.m; sourceTree = "<group>"; };
+		140871951FA975CB007E020E /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		140871971FA97D3B007E020E /* PeripheralViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PeripheralViewController.h; sourceTree = "<group>"; };
+		140871981FA97D3B007E020E /* PeripheralViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PeripheralViewController.m; sourceTree = "<group>"; };
+		1408719A1FA9A630007E020E /* CentralViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CentralViewController.h; sourceTree = "<group>"; };
+		1408719B1FA9A630007E020E /* CentralViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CentralViewController.m; sourceTree = "<group>"; };
 		144603C41F95915A00E9F651 /* TestCase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestCase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		144603C71F95915A00E9F651 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		144603C81F95915A00E9F651 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -79,6 +91,8 @@
 		144604141F95EBE300E9F651 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		144604161F95EC6200E9F651 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		144604181F95EC8000E9F651 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		145EDC241F9B314C00FDEBC7 /* AnimationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnimationViewController.h; sourceTree = "<group>"; };
+		145EDC251F9B314C00FDEBC7 /* AnimationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnimationViewController.m; sourceTree = "<group>"; };
 		1469938B1F99A3F500BC061D /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		1469938D1F99A3FF00BC061D /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		1469938F1F99A41F00BC061D /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -92,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				140871961FA975CB007E020E /* CoreBluetooth.framework in Frameworks */,
 				146993961F99A69200BC061D /* AssetsLibrary.framework in Frameworks */,
 				146993941F99A50500BC061D /* AVFoundation.framework in Frameworks */,
 				146993921F99A44900BC061D /* libstdc++.6.tbd in Frameworks */,
@@ -156,6 +171,14 @@
 				144603CB1F95915A00E9F651 /* ViewController.m */,
 				144603F91F95952700E9F651 /* LiftContrlViewController.h */,
 				144603FA1F95952700E9F651 /* LiftContrlViewController.m */,
+				145EDC241F9B314C00FDEBC7 /* AnimationViewController.h */,
+				145EDC251F9B314C00FDEBC7 /* AnimationViewController.m */,
+				140871921FA96E99007E020E /* BlueToothViewController.h */,
+				140871931FA96E99007E020E /* BlueToothViewController.m */,
+				1408719A1FA9A630007E020E /* CentralViewController.h */,
+				1408719B1FA9A630007E020E /* CentralViewController.m */,
+				140871971FA97D3B007E020E /* PeripheralViewController.h */,
+				140871981FA97D3B007E020E /* PeripheralViewController.m */,
 				144603CD1F95915A00E9F651 /* Main.storyboard */,
 				144603D01F95915A00E9F651 /* Assets.xcassets */,
 				144603D21F95915A00E9F651 /* LaunchScreen.storyboard */,
@@ -187,6 +210,7 @@
 		144603FC1F95964200E9F651 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				140871951FA975CB007E020E /* CoreBluetooth.framework */,
 				146993951F99A69100BC061D /* AssetsLibrary.framework */,
 				146993931F99A50500BC061D /* AVFoundation.framework */,
 				146993911F99A44900BC061D /* libstdc++.6.tbd */,
@@ -216,6 +240,8 @@
 			buildPhases = (
 				144603C01F95915A00E9F651 /* Sources */,
 				144603C11F95915A00E9F651 /* Frameworks */,
+				141ABB051FA1E622002E6F36 /* Auto Increase build number */,
+				141ABB061FA1EA98002E6F36 /* Auto Build IPA */,
 				144603C21F95915A00E9F651 /* Resources */,
 			);
 			buildRules = (
@@ -335,13 +361,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		141ABB051FA1E622002E6F36 /* Auto Increase build number */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Auto Increase build number";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
+		};
+		141ABB061FA1EA98002E6F36 /* Auto Build IPA */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Auto Build IPA";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "export LC_ALL=zh_CN.GB2312;\nexport LANG=zh_CN.GB2312\nbuildConfig=\"Release\" //这里是build模式\nprojectName=`find . -name *.xcodeproj | awk -F \"[/.]\" '{print $(NF-1)}'`\nprojectDir=`pwd`\nwwwIPADir=~/Desktop/$projectName-IPA\nisWorkSpace=true\necho \"~~~~~~~~~~~~~~~~~~~开始编译~~~~~~~~~~~~~~~~~~~\"\nif [ -d \"$wwwIPADir\" ]; then\necho $wwwIPADir\necho \"文件目录存在\"\nelse\necho \"文件目录不存在\"\nmkdir -pv $wwwIPADir\necho \"创建${wwwIPADir}目录成功\"\nfi\ncd $projectDir\nrm -rf ./build\nbuildAppToDir=$projectDir/build\ninfoPlist=\"$projectName/Info.plist\"\nbundleVersion=`/usr/libexec/PlistBuddy -c \"Print CFBundleShortVersionString\" $infoPlist`\nbundleIdentifier=`/usr/libexec/PlistBuddy -c \"Print CFBundleIdentifier\" $infoPlist`\nbundleBuildVersion=`/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" $infoPlist`\n\nif $isWorkSpace ; then  #是否用CocoaPod\necho  \"开始编译workspace....\"\nxcodebuild  -workspace $projectName.xcworkspace -scheme $projectName  -configuration $buildConfig clean build SYMROOT=$buildAppToDir\nelse\necho  \"开始编译target....\"\nxcodebuild  -target  $projectName  -configuration $buildConfig clean build SYMROOT=$buildAppToDir\nfi\n\nif test $? -eq 0\nthen\necho \"~~~~~~~~~~~~~~~~~~~编译成功~~~~~~~~~~~~~~~~~~~\"\nelse\necho \"~~~~~~~~~~~~~~~~~~~编译失败~~~~~~~~~~~~~~~~~~~\"\nexit 1\nfi\n\nipaName=`echo $projectName | tr \"[:upper:]\" \"[:lower:]\"` #将项目名转小写\nfindFolderName=`find . -name \"$buildConfig-*\" -type d |xargs basename` #查找目录\nappDir=$buildAppToDir/$findFolderName/  #app所在路径\necho \"开始打包$projectName.app成$projectName.ipa.....\"\nxcrun -sdk iphoneos PackageApplication -v $appDir/$projectName.app -o $appDir/$ipaName.ipa\n\nif [ -f \"$appDir/$ipaName.ipa\" ]\nthen\necho \"打包$ipaName.ipa成功.\"\nelse\necho \"打包$ipaName.ipa失败.\"\nexit 1\nfi\n\npath=$wwwIPADir/$projectName$(date +%Y%m%d%H%M%S).ipa\ncp -f -p $appDir/$ipaName.ipa $path   #拷贝ipa文件\necho \"复制$ipaName.ipa到${wwwIPADir}成功\"\necho \"~~~~~~~~~~~~~~~~~~~结束编译，处理成功~~~~~~~~~~~~~~~~~~~\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		144603C01F95915A00E9F651 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				144603CC1F95915A00E9F651 /* ViewController.m in Sources */,
+				140871991FA97D3B007E020E /* PeripheralViewController.m in Sources */,
+				1408719C1FA9A630007E020E /* CentralViewController.m in Sources */,
 				144603FB1F95952700E9F651 /* LiftContrlViewController.m in Sources */,
+				145EDC261F9B314C00FDEBC7 /* AnimationViewController.m in Sources */,
+				140871941FA96E99007E020E /* BlueToothViewController.m in Sources */,
 				144603D71F95915A00E9F651 /* main.m in Sources */,
 				144603C91F95915A00E9F651 /* AppDelegate.m in Sources */,
 			);
@@ -511,7 +572,7 @@
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PREFIX_HEADER = TestCase/PrefixHeader.pch;
 				INFOPLIST_FILE = TestCase/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wq.TestCase;
@@ -530,7 +591,7 @@
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PREFIX_HEADER = TestCase/PrefixHeader.pch;
 				INFOPLIST_FILE = TestCase/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wq.TestCase;

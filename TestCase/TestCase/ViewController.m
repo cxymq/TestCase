@@ -8,6 +8,8 @@
 
 #import "ViewController.h"
 #import "LiftContrlViewController.h"
+#import "AnimationViewController.h"
+#import "BlueToothViewController.h"
 
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -21,13 +23,39 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    //[self getUmengUDID];
+    
     self.view.backgroundColor = [UIColor whiteColor];
-    self.titles = @[@"梯控测试"];
+    self.titles = @[@"梯控测试",@"动画测试",@"蓝牙测试"];
     
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
     LiftContrlViewController *liftVc = [storyBoard instantiateViewControllerWithIdentifier:@"LiftContrlViewController"];
-    self.vcs = @[liftVc];
+    AnimationViewController *animationVc = [storyBoard instantiateViewControllerWithIdentifier:@"AnimationViewController"];
+    BlueToothViewController *blueVc = [storyBoard instantiateViewControllerWithIdentifier:@"BlueToothViewController"];
+    self.vcs = @[liftVc,animationVc,blueVc];
+    //[self test1];
+}
+- (void)getUmengUDID {
+    
+}
+- (void)openUDIDString {
+    
+}
+/*
+ *关于clang warning一些用法
+ *
+ */
+- (void) test1 {
+#warning "123"
+//#error @"321"
+    NSString *str = [[NSData alloc]init];
+    [str stringByAppendingString:@"123"];
+    //[str base64EncodedDataWithOptions:NSDataBase64Encoding64CharacterLineLength];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(inTest:) name:@"justTest" object:nil];
+#pragma clang diagnostic pop
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

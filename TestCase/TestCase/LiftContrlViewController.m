@@ -95,7 +95,7 @@
     NSInteger floorInt = floor.integerValue;
     NSInteger quotient = floorInt / 4;
     NSInteger remainder = floorInt % 4;
-    NSString *letter;
+    NSString *letter = @"";
     switch (remainder) {
         case 0:
             letter = @"8";
