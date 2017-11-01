@@ -8,6 +8,8 @@
 
 #import "CentralViewController.h"
 
+#define SERVICE_TEST  @"73097A48-A2BD-40BA-8699-B18283E16993"
+#define SERVICE_TEST2  @"AF920361-2859-42E5-A860-11AE0215719D"
 #define SERVICE_UUID @"68753A44-4D6F-1226-9C60-0050E4C00021"
 #define CHAR_NOTIFY_UUID1 @"68753A44-4D6F-1226-9C60-0050E4C00011"
 #define CHAR_READWRITE_UUID2 @"68753A44-4D6F-1226-9C60-0050E4C00012"
@@ -112,8 +114,8 @@
     NSLog(@"connection fail %@",error);
 }
 
-- (void)discoverSerivce {
-    [self.peripheral discoverServices:@[[CBUUID UUIDWithString:SERVICE_UUID]]];
+- (void)discoverSerivce {//@[[CBUUID UUIDWithString:SERVICE_UUID]]
+    [self.peripheral discoverServices:@[[CBUUID UUIDWithString:SERVICE_TEST],[CBUUID UUIDWithString:SERVICE_TEST2],[CBUUID UUIDWithString:@"1111"]]];
 }
 
 //成功发现服务的回调
@@ -152,7 +154,7 @@
             default:
                 break;
         }
-        if ([cha.UUID isEqual:CHAR_NOTIFY_UUID1]) {
+        if ([cha.UUID isEqual:[CBUUID UUIDWithString:@"2222"]]) {
             //注册通知
             [self.peripheral setNotifyValue:YES forCharacteristic:cha];
         }
