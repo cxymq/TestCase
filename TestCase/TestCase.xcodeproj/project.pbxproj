@@ -35,6 +35,8 @@
 		146993921F99A44900BC061D /* libstdc++.6.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 146993911F99A44900BC061D /* libstdc++.6.tbd */; };
 		146993941F99A50500BC061D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 146993931F99A50500BC061D /* AVFoundation.framework */; };
 		146993961F99A69200BC061D /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 146993951F99A69100BC061D /* AssetsLibrary.framework */; };
+		14F497C61FAB09E500ED24BA /* CentralCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F497C41FAB09E500ED24BA /* CentralCell.m */; };
+		14F497C71FAB09E500ED24BA /* CentralCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14F497C51FAB09E500ED24BA /* CentralCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +101,9 @@
 		146993911F99A44900BC061D /* libstdc++.6.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.tbd"; path = "usr/lib/libstdc++.6.tbd"; sourceTree = SDKROOT; };
 		146993931F99A50500BC061D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		146993951F99A69100BC061D /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		14F497C31FAB09E500ED24BA /* CentralCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CentralCell.h; sourceTree = "<group>"; };
+		14F497C41FAB09E500ED24BA /* CentralCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CentralCell.m; sourceTree = "<group>"; };
+		14F497C51FAB09E500ED24BA /* CentralCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CentralCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +184,9 @@
 				1408719B1FA9A630007E020E /* CentralViewController.m */,
 				140871971FA97D3B007E020E /* PeripheralViewController.h */,
 				140871981FA97D3B007E020E /* PeripheralViewController.m */,
+				14F497C31FAB09E500ED24BA /* CentralCell.h */,
+				14F497C41FAB09E500ED24BA /* CentralCell.m */,
+				14F497C51FAB09E500ED24BA /* CentralCell.xib */,
 				144603CD1F95915A00E9F651 /* Main.storyboard */,
 				144603D01F95915A00E9F651 /* Assets.xcassets */,
 				144603D21F95915A00E9F651 /* LaunchScreen.storyboard */,
@@ -340,6 +348,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				144603D41F95915A00E9F651 /* LaunchScreen.storyboard in Resources */,
+				14F497C71FAB09E500ED24BA /* CentralCell.xib in Resources */,
 				144603D11F95915A00E9F651 /* Assets.xcassets in Resources */,
 				144603CF1F95915A00E9F651 /* Main.storyboard in Resources */,
 			);
@@ -399,6 +408,7 @@
 			files = (
 				144603CC1F95915A00E9F651 /* ViewController.m in Sources */,
 				140871991FA97D3B007E020E /* PeripheralViewController.m in Sources */,
+				14F497C61FAB09E500ED24BA /* CentralCell.m in Sources */,
 				1408719C1FA9A630007E020E /* CentralViewController.m in Sources */,
 				144603FB1F95952700E9F651 /* LiftContrlViewController.m in Sources */,
 				145EDC261F9B314C00FDEBC7 /* AnimationViewController.m in Sources */,

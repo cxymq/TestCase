@@ -7,9 +7,13 @@
 //
 
 #import "CentralViewController.h"
+#import "CentralCell.h"
+#define SERVICE_TEST_OUTDOOR  @"0000ffe1-0000-1000-8000-00805f9b34fb"
+#define CHAR_TEST_OUTDOOR  @"73097A48-A2BD-40BA-8699-B18283E16993"
 
 #define SERVICE_TEST  @"73097A48-A2BD-40BA-8699-B18283E16993"
 #define SERVICE_TEST2  @"AF920361-2859-42E5-A860-11AE0215719D"
+
 #define SERVICE_UUID @"68753A44-4D6F-1226-9C60-0050E4C00021"
 #define CHAR_NOTIFY_UUID1 @"68753A44-4D6F-1226-9C60-0050E4C00011"
 #define CHAR_READWRITE_UUID2 @"68753A44-4D6F-1226-9C60-0050E4C00012"
@@ -21,6 +25,7 @@
 @property (nonatomic, strong) CBPeripheral *peripheral;
 
 @property (nonatomic, strong) NSMutableArray *peripheralArray;
+@property (nonatomic, strong) NSMutableArray *periRSSIArray;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end
 
@@ -32,6 +37,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.centralManager = [[CBCentralManager alloc]initWithDelegate:self queue:nil];
     _peripheralArray = [[NSMutableArray alloc]init];
+    _periRSSIArray = [[NSMutableArray alloc]init];
 }
 
 //判断设备是否正常工作
@@ -64,6 +70,8 @@
 -(void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary<NSString *,id> *)advertisementData RSSI:(NSNumber *)RSSI {
     if (![_peripheralArray containsObject:peripheral]) {
         [_peripheralArray addObject:peripheral];//RSSI 获取与设备的距离
+        NSString *rssiStr = [NSString stringWithFormat:@"%@",RSSI];
+        [_periRSSIArray addObject:rssiStr];
         [self.tableView reloadData];
     }
 }
@@ -76,17 +84,22 @@
     return self.peripheralArray.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CentralCell" forIndexPath:indexPath];
-    if (!cell) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CentralCell"];
-    }
+    CentralCell *cell = [CentralCell cellWithTableView:tableView];
+    
     CBPeripheral *peri = self.peripheralArray[indexPath.row];
     if (peri.name) {
-        cell.textLabel.text = peri.name;
+        cell.titileLb.text = peri.name;
     }else {
-        cell.textLabel.text = @"Null";
+        cell.titileLb.text = @"Null";
     }
+    cell.RSSILb.text = [@"RSSI:" stringByAppendingString:_periRSSIArray[indexPath.row]];
+    cell.distanceLb.text = [@"DIS:" stringByAppendingString:[self disByRSSI:_periRSSIArray[indexPath.row]]];
     return cell;
+}
+- (NSString *)disByRSSI:(NSString *)rssi {
+    int iRssi = abs(rssi.intValue);
+    float power = (iRssi - 59)/(10 * 2.0);
+    return [NSString stringWithFormat:@"%f",pow(10, power)];
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -114,8 +127,8 @@
     NSLog(@"connection fail %@",error);
 }
 
-- (void)discoverSerivce {//@[[CBUUID UUIDWithString:SERVICE_UUID]]
-    [self.peripheral discoverServices:@[[CBUUID UUIDWithString:SERVICE_TEST],[CBUUID UUIDWithString:SERVICE_TEST2],[CBUUID UUIDWithString:@"1111"]]];
+- (void)discoverSerivce {//
+    [self.peripheral discoverServices:@[[CBUUID UUIDWithString:SERVICE_UUID]]];
 }
 
 //成功发现服务的回调
@@ -141,6 +154,7 @@
 }
 - (void)didFindAllCharacteristic:(NSArray *)charaterArr forService:(CBService *)service {
     for (CBCharacteristic *cha in charaterArr) {
+        NSLog(@"Characteristic UUID %@",cha.UUID);
         switch (cha.properties) {
             case CBCharacteristicPropertyRead:
                 NSLog(@"%@--------read",cha);
@@ -158,26 +172,35 @@
             //注册通知
             [self.peripheral setNotifyValue:YES forCharacteristic:cha];
         }
-        if ([cha.UUID isEqual:CHAR_READWRITE_UUID2]) {
-            //注册通知
-            [self.peripheral setNotifyValue:YES forCharacteristic:cha];
-        }
-        if ([cha.UUID isEqual:CHAR_READ_UUID3]) {
+        if ([cha.UUID isEqual:[CBUUID UUIDWithString:CHAR_NOTIFY_UUID1]]) {
             //注册通知
             [self.peripheral setNotifyValue:YES forCharacteristic:cha];
         }
         if ([cha.UUID isEqual:CHAR_WRITE_UUID4]) {
             //只有写入的属性，不能注册通知
         }
+        if ([cha.UUID isEqual:[CBUUID UUIDWithString:CHAR_TEST_OUTDOOR]]) {
+            [self writeDateToPeripheral:cha];
+        }
+        if ([cha.UUID isEqual:[CBUUID UUIDWithString:CHAR_READWRITE_UUID2]]) {
+            [self writeDateToPeripheral:cha];
+        }
     }
 }
-//监听通知的状态
+//监听通知的状态,收到 读取数据
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateNotificationStateForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
     if (error) {
         NSLog(@"注册失败 %@",error);
         return;
     }
+    NSLog(@"收到的数据：%@",characteristic.value);
     NSLog(@"注册成功 %@",characteristic);
+}
+
+//写入数据
+- (void)writeDateToPeripheral:(CBCharacteristic *)characteristic {
+    NSData *d = [@"0x02" dataUsingEncoding:NSUTF8StringEncoding];
+    [self.peripheral writeValue:d forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

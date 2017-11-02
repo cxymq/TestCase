@@ -7,6 +7,7 @@
 //
 
 #import "PeripheralViewController.h"
+#import <UserNotifications/UserNotifications.h>
 
 @interface PeripheralViewController ()<CBPeripheralManagerDelegate>
 {
@@ -18,6 +19,7 @@
     NSString *_serviceUUID;
     NSString *_localNameKey;
     NSTimer *_timer;
+    CBMutableCharacteristic *_notiCharacter;
 }
 
 @end
@@ -72,7 +74,7 @@
 //配置蓝牙
 - (void)configBt {
     //设置特征
-    CBMutableCharacteristic *notiCharacter = [[CBMutableCharacteristic alloc]initWithType:[CBUUID UUIDWithString:_notiCharacterUUID] properties:CBCharacteristicPropertyNotify value:nil permissions:CBAttributePermissionsReadable];
+    _notiCharacter = [[CBMutableCharacteristic alloc]initWithType:[CBUUID UUIDWithString:_notiCharacterUUID] properties:CBCharacteristicPropertyNotify value:nil permissions:CBAttributePermissionsReadable];
     CBMutableCharacteristic *readWriteCharater = [[CBMutableCharacteristic alloc]initWithType:[CBUUID UUIDWithString:_readWriteCharaterUUID] properties:CBCharacteristicPropertyWrite | CBCharacteristicPropertyRead value:nil permissions:CBAttributePermissionsWriteable | CBAttributePermissionsReadable];
     CBMutableCharacteristic *readCharater = [[CBMutableCharacteristic alloc]initWithType:[CBUUID UUIDWithString:_readCharaterUUID] properties:CBCharacteristicPropertyRead value:nil permissions:CBAttributePermissionsReadable];
     CBMutableCharacteristic *writeCharater = [[CBMutableCharacteristic alloc]initWithType:[CBUUID UUIDWithString:_writeCharaterUUID] properties:CBCharacteristicPropertyWrite value:nil permissions:CBAttributePermissionsWriteable];
@@ -85,7 +87,7 @@
     [writeCharater setDescriptors:@[readWriteDes2]];
     //设置服务，将特征加入服务中
     CBMutableService *service1 = [[CBMutableService alloc]initWithType:[CBUUID UUIDWithString:_serviceUUID] primary:YES];
-    [service1 setCharacteristics:@[notiCharacter,readWriteCharater,readCharater,writeCharater]];
+    [service1 setCharacteristics:@[_notiCharacter,readWriteCharater,readCharater,writeCharater]];
     //将服务加入到外设中,可以添加多个服务
     [_peripheralManager addService:service1];
 }
@@ -115,10 +117,10 @@
     _timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(sendData:) userInfo:characteristic repeats:YES];
 }
 - (BOOL)sendData:(NSTimer *)t {
-    CBMutableCharacteristic *charater = t.userInfo;
+    CBMutableCharacteristic *charater = _notiCharacter;
     NSDateFormatter *dft = [[NSDateFormatter alloc]init];
     [dft setDateFormat:@"ss"];
-    return [_peripheralManager updateValue:[[dft stringFromDate:[NSDate date]] dataUsingEncoding:NSUTF8StringEncoding] forCharacteristic:charater onSubscribedCentrals:nil];
+    return [_peripheralManager updateValue:[[dft stringFromDate:[NSDate date]] dataUsingEncoding:NSUTF8StringEncoding] forCharacteristic:_notiCharacter onSubscribedCentrals:nil];
 }
 //取消通知功能
 -(void)peripheralManager:(CBPeripheralManager *)peripheral central:(CBCentral *)central didUnsubscribeFromCharacteristic:(CBCharacteristic *)characteristic {
@@ -126,6 +128,49 @@
     [_timer invalidate];
     _timer = nil;
 }
+- (void)peripheralManager:(CBPeripheralManager *)peripheral didReceiveReadRequest:(CBATTRequest *)request {
+    NSLog(@"didReceiveReadRequest");
+    //判断是否有读数据的权限
+    if (request.characteristic.properties & CBCharacteristicPropertyRead) {
+        NSData *data = request.characteristic.value;
+        [request setValue:data];
+        //对请求作出成功响应
+        [_peripheralManager respondToRequest:request withResult:CBATTErrorSuccess];
+    }else{
+        [_peripheralManager respondToRequest:request withResult:CBATTErrorWriteNotPermitted];
+    }
+}
+//写characteristics请求
+- (void)peripheralManager:(CBPeripheralManager *)peripheral didReceiveWriteRequests:(NSArray *)requests{
+    NSLog(@"didReceiveWriteRequests");
+    CBATTRequest *request = requests[0];
+    //判断是否有写数据的权限
+    if (request.characteristic.properties & CBCharacteristicPropertyWrite) {
+        //需要转换成CBMutableCharacteristic对象才能进行写值
+        CBMutableCharacteristic *c =(CBMutableCharacteristic *)request.characteristic;
+        c.value = request.value;
+        [self setLocal10WithAlert:[[NSString alloc]initWithData:request.value encoding:NSUTF8StringEncoding]];
+        [_peripheralManager respondToRequest:request withResult:CBATTErrorSuccess];
+    }else{
+        [_peripheralManager respondToRequest:request withResult:CBATTErrorWriteNotPermitted];
+    }
+}
 
-
+- (void)setLocal10WithAlert:(NSString *)alert {
+    
+    UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc]init];
+    content.title = @"西西生活通知您";
+    content.body = alert;
+    UNNotificationSound *sound = [UNNotificationSound soundNamed:@"sub2.caf"];
+    content.sound = sound;
+    content.userInfo = @{@"noti":@"alarm"};
+    UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:1 repeats:NO];
+    UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:@"RequestSafe" content:content trigger:trigger];
+    
+    [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
+        if (error) {
+            //DLog(@"error:%@",error);
+        }
+    }];
+}
 @end
