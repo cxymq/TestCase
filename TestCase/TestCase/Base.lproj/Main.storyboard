@@ -161,24 +161,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="au0-Nx-FEV">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="au0-Nx-FEV">
                                 <rect key="frame" x="43" y="216" width="62" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="作为外设"/>
                                 <connections>
                                     <action selector="PeripheralEvent:" destination="1KX-OL-hQW" eventType="touchUpInside" id="GPC-yn-dyZ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Alm-wQ-Lkf">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Alm-wQ-Lkf">
                                 <rect key="frame" x="43" y="98" width="62" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="作为中心"/>
                                 <connections>
                                     <action selector="centralEvent:" destination="1KX-OL-hQW" eventType="touchUpInside" id="8ha-u2-bMm"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sWA-MT-DmP">
+                                <rect key="frame" x="43" y="330" width="82" height="30"/>
+                                <state key="normal" title="扫描beacon"/>
+                                <connections>
+                                    <action selector="beaconEvent:" destination="1KX-OL-hQW" eventType="touchUpInside" id="OtS-51-P44"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="au0-Nx-FEV" firstAttribute="leading" secondItem="Alm-wQ-Lkf" secondAttribute="leading" id="E6F-xJ-5op"/>
+                            <constraint firstItem="sWA-MT-DmP" firstAttribute="leading" secondItem="ROh-uc-dMb" secondAttribute="leading" constant="43" id="L9w-si-FRA"/>
+                            <constraint firstItem="au0-Nx-FEV" firstAttribute="top" secondItem="Alm-wQ-Lkf" secondAttribute="bottom" constant="88" id="U4O-ad-Gf8"/>
+                            <constraint firstItem="sWA-MT-DmP" firstAttribute="top" secondItem="au0-Nx-FEV" secondAttribute="bottom" constant="84" id="ZTC-Dh-L4g"/>
+                            <constraint firstItem="au0-Nx-FEV" firstAttribute="leading" secondItem="sWA-MT-DmP" secondAttribute="leading" id="hnx-x9-5C3"/>
+                            <constraint firstItem="ROh-uc-dMb" firstAttribute="trailing" secondItem="sWA-MT-DmP" secondAttribute="trailing" constant="250" id="ub3-0j-4kv"/>
+                            <constraint firstItem="ROh-uc-dMb" firstAttribute="bottom" secondItem="sWA-MT-DmP" secondAttribute="bottom" constant="307" id="xgG-VX-Cpo"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ROh-uc-dMb"/>
                     </view>
                 </viewController>

@@ -187,8 +187,7 @@
         }
     }
 }
-//监听通知的状态,收到 读取数据
-- (void)peripheral:(CBPeripheral *)peripheral didUpdateNotificationStateForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
+-(void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
     if (error) {
         NSLog(@"注册失败 %@",error);
         return;
@@ -196,6 +195,15 @@
     NSLog(@"收到的数据：%@",characteristic.value);
     NSLog(@"注册成功 %@",characteristic);
 }
+//监听通知的状态,收到 读取数据
+//- (void)peripheral:(CBPeripheral *)peripheral didUpdateNotificationStateForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
+//    if (error) {
+//        NSLog(@"注册失败 %@",error);
+//        return;
+//    }
+//    NSLog(@"收到的数据：%@",characteristic.value);
+//    NSLog(@"注册成功 %@",characteristic);
+//}
 
 //写入数据
 - (void)writeDateToPeripheral:(CBCharacteristic *)characteristic {

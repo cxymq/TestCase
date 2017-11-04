@@ -9,6 +9,7 @@
 #import "BlueToothViewController.h"
 #import "CentralViewController.h"
 #import "PeripheralViewController.h"
+#import "BeaconViewController.h"
 
 @interface BlueToothViewController ()
 
@@ -29,6 +30,10 @@
 - (IBAction)PeripheralEvent:(id)sender {
     PeripheralViewController *PeripheralVc = [[PeripheralViewController alloc]init];
     [self.navigationController pushViewController:PeripheralVc animated:YES];
+}
+- (IBAction)beaconEvent:(id)sender {
+    BeaconViewController *beaconVc = [[BeaconViewController alloc]init];
+    [self.navigationController pushViewController:beaconVc animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

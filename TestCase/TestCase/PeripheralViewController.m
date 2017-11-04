@@ -117,10 +117,11 @@
     _timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(sendData:) userInfo:characteristic repeats:YES];
 }
 - (BOOL)sendData:(NSTimer *)t {
-    CBMutableCharacteristic *charater = _notiCharacter;
+    CBMutableCharacteristic *charater = t.userInfo;
     NSDateFormatter *dft = [[NSDateFormatter alloc]init];
     [dft setDateFormat:@"ss"];
-    return [_peripheralManager updateValue:[[dft stringFromDate:[NSDate date]] dataUsingEncoding:NSUTF8StringEncoding] forCharacteristic:_notiCharacter onSubscribedCentrals:nil];
+    BOOL isSend = [_peripheralManager updateValue:[[dft stringFromDate:[NSDate date]] dataUsingEncoding:NSUTF8StringEncoding] forCharacteristic:charater onSubscribedCentrals:nil];
+    return isSend;
 }
 //取消通知功能
 -(void)peripheralManager:(CBPeripheralManager *)peripheral central:(CBCentral *)central didUnsubscribeFromCharacteristic:(CBCharacteristic *)characteristic {
