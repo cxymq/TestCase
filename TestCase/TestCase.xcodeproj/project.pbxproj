@@ -11,6 +11,7 @@
 		140871961FA975CB007E020E /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 140871951FA975CB007E020E /* CoreBluetooth.framework */; };
 		140871991FA97D3B007E020E /* PeripheralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 140871981FA97D3B007E020E /* PeripheralViewController.m */; };
 		1408719C1FA9A630007E020E /* CentralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1408719B1FA9A630007E020E /* CentralViewController.m */; };
+		14100F702011DFE900EFAF76 /* XXSound.m in Sources */ = {isa = PBXBuildFile; fileRef = 14100F6F2011DFE900EFAF76 /* XXSound.m */; };
 		144603C91F95915A00E9F651 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 144603C81F95915A00E9F651 /* AppDelegate.m */; };
 		144603CC1F95915A00E9F651 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 144603CB1F95915A00E9F651 /* ViewController.m */; };
 		144603CF1F95915A00E9F651 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 144603CD1F95915A00E9F651 /* Main.storyboard */; };
@@ -66,6 +67,8 @@
 		140871981FA97D3B007E020E /* PeripheralViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PeripheralViewController.m; sourceTree = "<group>"; };
 		1408719A1FA9A630007E020E /* CentralViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CentralViewController.h; sourceTree = "<group>"; };
 		1408719B1FA9A630007E020E /* CentralViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CentralViewController.m; sourceTree = "<group>"; };
+		14100F6E2011DFE900EFAF76 /* XXSound.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXSound.h; sourceTree = "<group>"; };
+		14100F6F2011DFE900EFAF76 /* XXSound.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXSound.m; sourceTree = "<group>"; };
 		144603C41F95915A00E9F651 /* TestCase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestCase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		144603C71F95915A00E9F651 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		144603C81F95915A00E9F651 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -180,6 +183,8 @@
 				144603C81F95915A00E9F651 /* AppDelegate.m */,
 				144603CA1F95915A00E9F651 /* ViewController.h */,
 				144603CB1F95915A00E9F651 /* ViewController.m */,
+				14100F6E2011DFE900EFAF76 /* XXSound.h */,
+				14100F6F2011DFE900EFAF76 /* XXSound.m */,
 				144603F91F95952700E9F651 /* LiftContrlViewController.h */,
 				144603FA1F95952700E9F651 /* LiftContrlViewController.m */,
 				145EDC241F9B314C00FDEBC7 /* AnimationViewController.h */,
@@ -420,6 +425,7 @@
 				140871991FA97D3B007E020E /* PeripheralViewController.m in Sources */,
 				14F497C61FAB09E500ED24BA /* CentralCell.m in Sources */,
 				1408719C1FA9A630007E020E /* CentralViewController.m in Sources */,
+				14100F702011DFE900EFAF76 /* XXSound.m in Sources */,
 				144603FB1F95952700E9F651 /* LiftContrlViewController.m in Sources */,
 				145EDC261F9B314C00FDEBC7 /* AnimationViewController.m in Sources */,
 				140871941FA96E99007E020E /* BlueToothViewController.m in Sources */,
@@ -588,7 +594,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = EJ429UWLN6;
+				DEVELOPMENT_TEAM = W8UU3E8JH8;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PREFIX_HEADER = TestCase/PrefixHeader.pch;
 				INFOPLIST_FILE = TestCase/Info.plist;
@@ -607,7 +613,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = EJ429UWLN6;
+				DEVELOPMENT_TEAM = W8UU3E8JH8;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PREFIX_HEADER = TestCase/PrefixHeader.pch;
 				INFOPLIST_FILE = TestCase/Info.plist;
